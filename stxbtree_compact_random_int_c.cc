@@ -77,7 +77,7 @@ int main() {
     count++;
   }
 
-  std::cout << "stxbtree compact random int " << "memory " << (memory + 0.0)/1000000 << "\n"; //compact
+  std::cout << "stxbtree compact random int " << "memory " << (memory + stxbtree->bloom_filter_size() + 0.0)/1000000 << "\n"; //compact
 
   //READ/UPDATE TEST----------------
   double start_time = get_now();
