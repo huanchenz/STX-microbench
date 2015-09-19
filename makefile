@@ -5,6 +5,8 @@ DEPSDIR := hybrid_index/.deps
 DEPCFLAGS = -MD -MF $(DEPSDIR)/$*.d -MP
 MEMMGR = -ltcmalloc_minimal
 
+SNAPPY = /usr/lib/libsnappy.so.1.3.0
+
 all: stxbtree_ori_random_int_a stxbtree_ori_random_int_c stxbtree_ori_random_int_e stxbtree_ori_monoinc_int_a stxbtree_ori_monoinc_int_c stxbtree_ori_monoinc_int_e stxbtree_ori_random_str_a stxbtree_ori_random_str_c stxbtree_ori_random_str_e stxbtree_ori_email_a stxbtree_ori_email_c stxbtree_ori_email_e stxbtree_ori_url_a stxbtree_ori_url_c stxbtree_ori_url_e 
 #all: stxbtree_compact_random_int_a stxbtree_compact_random_int_c stxbtree_compact_random_int_e stxbtree_compact_monoinc_int_a stxbtree_compact_monoinc_int_c stxbtree_compact_monoinc_int_e stxbtree_compact_random_str_a stxbtree_compact_random_str_c stxbtree_compact_random_str_e stxbtree_compact_email_a stxbtree_compact_email_c stxbtree_compact_email_e stxbtree_compact_url_a stxbtree_compact_url_c stxbtree_compact_url_e 
 #all: stxbtree_compress_random_int_a stxbtree_compress_random_int_c stxbtree_compress_random_int_e stxbtree_compress_monoinc_int_a stxbtree_compress_monoinc_int_c stxbtree_compress_monoinc_int_e stxbtree_compress_random_str_a stxbtree_compress_random_str_c stxbtree_compress_random_str_e stxbtree_compress_email_a stxbtree_compress_email_c stxbtree_compress_email_e stxbtree_compress_url_a stxbtree_compress_url_c stxbtree_compress_url_e
@@ -361,167 +363,167 @@ stxbtree_compress_random_int_a.o: stxbtree_compress_random_int_a.cc microbench.h
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_int_a.o stxbtree_compress_random_int_a.cc
 
 stxbtree_compress_random_int_a: stxbtree_compress_random_int_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_a stxbtree_compress_random_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_a stxbtree_compress_random_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_int_a.o: latency_stxbtree_compress_random_int_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_int_a.o latency_stxbtree_compress_random_int_a.cc
 
 latency_stxbtree_compress_random_int_a: latency_stxbtree_compress_random_int_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_a latency_stxbtree_compress_random_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_a latency_stxbtree_compress_random_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_random_int_c.o: stxbtree_compress_random_int_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_int_c.o stxbtree_compress_random_int_c.cc
 
 stxbtree_compress_random_int_c: stxbtree_compress_random_int_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_c stxbtree_compress_random_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_c stxbtree_compress_random_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_int_c.o: latency_stxbtree_compress_random_int_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_int_c.o latency_stxbtree_compress_random_int_c.cc
 
 latency_stxbtree_compress_random_int_c: latency_stxbtree_compress_random_int_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_c latency_stxbtree_compress_random_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_c latency_stxbtree_compress_random_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_random_int_e.o: stxbtree_compress_random_int_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_int_e.o stxbtree_compress_random_int_e.cc
 
 stxbtree_compress_random_int_e: stxbtree_compress_random_int_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_e stxbtree_compress_random_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_int_e stxbtree_compress_random_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_int_e.o: latency_stxbtree_compress_random_int_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_int_e.o latency_stxbtree_compress_random_int_e.cc
 
 latency_stxbtree_compress_random_int_e: latency_stxbtree_compress_random_int_e.o 
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_e latency_stxbtree_compress_random_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_int_e latency_stxbtree_compress_random_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree compress monoinc int=====================================================================
 stxbtree_compress_monoinc_int_a.o: stxbtree_compress_monoinc_int_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_monoinc_int_a.o stxbtree_compress_monoinc_int_a.cc
 
 stxbtree_compress_monoinc_int_a: stxbtree_compress_monoinc_int_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_a stxbtree_compress_monoinc_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_a stxbtree_compress_monoinc_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_monoinc_int_a.o: latency_stxbtree_compress_monoinc_int_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_monoinc_int_a.o latency_stxbtree_compress_monoinc_int_a.cc
 
 latency_stxbtree_compress_monoinc_int_a: latency_stxbtree_compress_monoinc_int_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_a latency_stxbtree_compress_monoinc_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_a latency_stxbtree_compress_monoinc_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_monoinc_int_c.o: stxbtree_compress_monoinc_int_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_monoinc_int_c.o stxbtree_compress_monoinc_int_c.cc
 
 stxbtree_compress_monoinc_int_c: stxbtree_compress_monoinc_int_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_c stxbtree_compress_monoinc_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_c stxbtree_compress_monoinc_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_monoinc_int_c.o: latency_stxbtree_compress_monoinc_int_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_monoinc_int_c.o latency_stxbtree_compress_monoinc_int_c.cc
 
 latency_stxbtree_compress_monoinc_int_c: latency_stxbtree_compress_monoinc_int_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_c latency_stxbtree_compress_monoinc_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_c latency_stxbtree_compress_monoinc_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_monoinc_int_e.o: stxbtree_compress_monoinc_int_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_monoinc_int_e.o stxbtree_compress_monoinc_int_e.cc
 
 stxbtree_compress_monoinc_int_e: stxbtree_compress_monoinc_int_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_e stxbtree_compress_monoinc_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_monoinc_int_e stxbtree_compress_monoinc_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_monoinc_int_e.o: latency_stxbtree_compress_monoinc_int_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_monoinc_int_e.o latency_stxbtree_compress_monoinc_int_e.cc
 
 latency_stxbtree_compress_monoinc_int_e: latency_stxbtree_compress_monoinc_int_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_e latency_stxbtree_compress_monoinc_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_monoinc_int_e latency_stxbtree_compress_monoinc_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree compress random str=====================================================================
 stxbtree_compress_random_str_a.o: stxbtree_compress_random_str_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_str_a.o stxbtree_compress_random_str_a.cc
 
 stxbtree_compress_random_str_a: stxbtree_compress_random_str_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_a stxbtree_compress_random_str_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_a stxbtree_compress_random_str_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_str_a.o: latency_stxbtree_compress_random_str_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_str_a.o latency_stxbtree_compress_random_str_a.cc
 
 latency_stxbtree_compress_random_str_a: latency_stxbtree_compress_random_str_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_a latency_stxbtree_compress_random_str_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_a latency_stxbtree_compress_random_str_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_random_str_c.o: stxbtree_compress_random_str_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_str_c.o stxbtree_compress_random_str_c.cc
 
 stxbtree_compress_random_str_c: stxbtree_compress_random_str_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_c stxbtree_compress_random_str_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_c stxbtree_compress_random_str_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_str_c.o: latency_stxbtree_compress_random_str_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_str_c.o latency_stxbtree_compress_random_str_c.cc
 
 latency_stxbtree_compress_random_str_c: latency_stxbtree_compress_random_str_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_c latency_stxbtree_compress_random_str_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_c latency_stxbtree_compress_random_str_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_random_str_e.o: stxbtree_compress_random_str_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_random_str_e.o stxbtree_compress_random_str_e.cc
 
 stxbtree_compress_random_str_e: stxbtree_compress_random_str_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_e stxbtree_compress_random_str_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_random_str_e stxbtree_compress_random_str_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_random_str_e.o: latency_stxbtree_compress_random_str_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_random_str_e.o latency_stxbtree_compress_random_str_e.cc
 
 latency_stxbtree_compress_random_str_e: latency_stxbtree_compress_random_str_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_e latency_stxbtree_compress_random_str_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_random_str_e latency_stxbtree_compress_random_str_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree compress email=====================================================================
 stxbtree_compress_email_a.o: stxbtree_compress_email_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_email_a.o stxbtree_compress_email_a.cc
 
 stxbtree_compress_email_a: stxbtree_compress_email_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_email_a stxbtree_compress_email_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_email_a stxbtree_compress_email_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_email_a.o: latency_stxbtree_compress_email_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_email_a.o latency_stxbtree_compress_email_a.cc
 
 latency_stxbtree_compress_email_a: latency_stxbtree_compress_email_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_a latency_stxbtree_compress_email_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_a latency_stxbtree_compress_email_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_email_c.o: stxbtree_compress_email_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_email_c.o stxbtree_compress_email_c.cc
 
 stxbtree_compress_email_c: stxbtree_compress_email_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_email_c stxbtree_compress_email_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_email_c stxbtree_compress_email_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_email_c.o: latency_stxbtree_compress_email_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_email_c.o latency_stxbtree_compress_email_c.cc
 
 latency_stxbtree_compress_email_c: latency_stxbtree_compress_email_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_c latency_stxbtree_compress_email_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_c latency_stxbtree_compress_email_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_compress_email_e.o: stxbtree_compress_email_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_email_e.o stxbtree_compress_email_e.cc
 
 stxbtree_compress_email_e: stxbtree_compress_email_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_email_e stxbtree_compress_email_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_email_e stxbtree_compress_email_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_compress_email_e.o: latency_stxbtree_compress_email_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_compress_email_e.o latency_stxbtree_compress_email_e.cc
 
 latency_stxbtree_compress_email_e: latency_stxbtree_compress_email_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_e latency_stxbtree_compress_email_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_compress_email_e latency_stxbtree_compress_email_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree compress url=====================================================================
 stxbtree_compress_url_a.o: stxbtree_compress_url_a.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_url_a.o stxbtree_compress_url_a.cc
 
 stxbtree_compress_url_a: stxbtree_compress_url_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_url_a stxbtree_compress_url_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_url_a stxbtree_compress_url_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 stxbtree_compress_url_c.o: stxbtree_compress_url_c.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_url_c.o stxbtree_compress_url_c.cc
 
 stxbtree_compress_url_c: stxbtree_compress_url_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_url_c stxbtree_compress_url_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_url_c stxbtree_compress_url_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 stxbtree_compress_url_e.o: stxbtree_compress_url_e.cc microbench.hh stx-compress/btree.h stx-compress/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_compress_url_e.o stxbtree_compress_url_e.cc
 
 stxbtree_compress_url_e: stxbtree_compress_url_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_compress_url_e stxbtree_compress_url_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_compress_url_e stxbtree_compress_url_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 
 #stxbtree multi original random int=====================================================================
@@ -827,148 +829,148 @@ stxbtree_multi_compress_random_int_a.o: stxbtree_multi_compress_random_int_a.cc 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_int_a.o stxbtree_multi_compress_random_int_a.cc
 
 stxbtree_multi_compress_random_int_a: stxbtree_multi_compress_random_int_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_a stxbtree_multi_compress_random_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_a stxbtree_multi_compress_random_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_int_a.o: latency_stxbtree_multi_compress_random_int_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_int_a.o latency_stxbtree_multi_compress_random_int_a.cc
 
 latency_stxbtree_multi_compress_random_int_a: latency_stxbtree_multi_compress_random_int_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_a latency_stxbtree_multi_compress_random_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_a latency_stxbtree_multi_compress_random_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_random_int_c.o: stxbtree_multi_compress_random_int_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_int_c.o stxbtree_multi_compress_random_int_c.cc
 
 stxbtree_multi_compress_random_int_c: stxbtree_multi_compress_random_int_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_c stxbtree_multi_compress_random_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_c stxbtree_multi_compress_random_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_int_c.o: latency_stxbtree_multi_compress_random_int_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_int_c.o latency_stxbtree_multi_compress_random_int_c.cc
 
 latency_stxbtree_multi_compress_random_int_c: latency_stxbtree_multi_compress_random_int_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_c latency_stxbtree_multi_compress_random_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_c latency_stxbtree_multi_compress_random_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_random_int_e.o: stxbtree_multi_compress_random_int_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_int_e.o stxbtree_multi_compress_random_int_e.cc
 
 stxbtree_multi_compress_random_int_e: stxbtree_multi_compress_random_int_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_e stxbtree_multi_compress_random_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_int_e stxbtree_multi_compress_random_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_int_e.o: latency_stxbtree_multi_compress_random_int_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_int_e.o latency_stxbtree_multi_compress_random_int_e.cc
 
 latency_stxbtree_multi_compress_random_int_e: latency_stxbtree_multi_compress_random_int_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_e latency_stxbtree_multi_compress_random_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_int_e latency_stxbtree_multi_compress_random_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree multi compress mono inc int=====================================================================
 stxbtree_multi_compress_monoinc_int_a.o: stxbtree_multi_compress_monoinc_int_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_monoinc_int_a.o stxbtree_multi_compress_monoinc_int_a.cc
 
 stxbtree_multi_compress_monoinc_int_a: stxbtree_multi_compress_monoinc_int_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_a stxbtree_multi_compress_monoinc_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_a stxbtree_multi_compress_monoinc_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_monoinc_int_a.o: latency_stxbtree_multi_compress_monoinc_int_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_monoinc_int_a.o latency_stxbtree_multi_compress_monoinc_int_a.cc
 
 latency_stxbtree_multi_compress_monoinc_int_a: latency_stxbtree_multi_compress_monoinc_int_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_a latency_stxbtree_multi_compress_monoinc_int_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_a latency_stxbtree_multi_compress_monoinc_int_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_monoinc_int_c.o: stxbtree_multi_compress_monoinc_int_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_monoinc_int_c.o stxbtree_multi_compress_monoinc_int_c.cc
 
 stxbtree_multi_compress_monoinc_int_c: stxbtree_multi_compress_monoinc_int_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_c stxbtree_multi_compress_monoinc_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_c stxbtree_multi_compress_monoinc_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_monoinc_int_c.o: latency_stxbtree_multi_compress_monoinc_int_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_monoinc_int_c.o latency_stxbtree_multi_compress_monoinc_int_c.cc
 
 latency_stxbtree_multi_compress_monoinc_int_c: latency_stxbtree_multi_compress_monoinc_int_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_c latency_stxbtree_multi_compress_monoinc_int_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_c latency_stxbtree_multi_compress_monoinc_int_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_monoinc_int_e.o: stxbtree_multi_compress_monoinc_int_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_monoinc_int_e.o stxbtree_multi_compress_monoinc_int_e.cc
 
 stxbtree_multi_compress_monoinc_int_e: stxbtree_multi_compress_monoinc_int_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_e stxbtree_multi_compress_monoinc_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_monoinc_int_e stxbtree_multi_compress_monoinc_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_monoinc_int_e.o: latency_stxbtree_multi_compress_monoinc_int_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_monoinc_int_e.o latency_stxbtree_multi_compress_monoinc_int_e.cc
 
 latency_stxbtree_multi_compress_monoinc_int_e: latency_stxbtree_multi_compress_monoinc_int_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_e latency_stxbtree_multi_compress_monoinc_int_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_monoinc_int_e latency_stxbtree_multi_compress_monoinc_int_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree multi compress random string=====================================================================
 stxbtree_multi_compress_random_str_a.o: stxbtree_multi_compress_random_str_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_str_a.o stxbtree_multi_compress_random_str_a.cc
 
 stxbtree_multi_compress_random_str_a: stxbtree_multi_compress_random_str_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_a stxbtree_multi_compress_random_str_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_a stxbtree_multi_compress_random_str_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_str_a.o: latency_stxbtree_multi_compress_random_str_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_str_a.o latency_stxbtree_multi_compress_random_str_a.cc
 
 latency_stxbtree_multi_compress_random_str_a: latency_stxbtree_multi_compress_random_str_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_a latency_stxbtree_multi_compress_random_str_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_a latency_stxbtree_multi_compress_random_str_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_random_str_c.o: stxbtree_multi_compress_random_str_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_str_c.o stxbtree_multi_compress_random_str_c.cc
 
 stxbtree_multi_compress_random_str_c: stxbtree_multi_compress_random_str_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_c stxbtree_multi_compress_random_str_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_c stxbtree_multi_compress_random_str_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_str_c.o: latency_stxbtree_multi_compress_random_str_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_str_c.o latency_stxbtree_multi_compress_random_str_c.cc
 
 latency_stxbtree_multi_compress_random_str_c: latency_stxbtree_multi_compress_random_str_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_c latency_stxbtree_multi_compress_random_str_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_c latency_stxbtree_multi_compress_random_str_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_random_str_e.o: stxbtree_multi_compress_random_str_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_random_str_e.o stxbtree_multi_compress_random_str_e.cc
 
 stxbtree_multi_compress_random_str_e: stxbtree_multi_compress_random_str_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_e stxbtree_multi_compress_random_str_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_random_str_e stxbtree_multi_compress_random_str_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_random_str_e.o: latency_stxbtree_multi_compress_random_str_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_random_str_e.o latency_stxbtree_multi_compress_random_str_e.cc
 
 latency_stxbtree_multi_compress_random_str_e: latency_stxbtree_multi_compress_random_str_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_e latency_stxbtree_multi_compress_random_str_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_random_str_e latency_stxbtree_multi_compress_random_str_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 #stxbtree multi compress email=====================================================================
 stxbtree_multi_compress_email_a.o: stxbtree_multi_compress_email_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_email_a.o stxbtree_multi_compress_email_a.cc
 
 stxbtree_multi_compress_email_a: stxbtree_multi_compress_email_a.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_a stxbtree_multi_compress_email_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_a stxbtree_multi_compress_email_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_email_a.o: latency_stxbtree_multi_compress_email_a.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_email_a.o latency_stxbtree_multi_compress_email_a.cc
 
 latency_stxbtree_multi_compress_email_a: latency_stxbtree_multi_compress_email_a.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_a latency_stxbtree_multi_compress_email_a.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_a latency_stxbtree_multi_compress_email_a.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_email_c.o: stxbtree_multi_compress_email_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_email_c.o stxbtree_multi_compress_email_c.cc
 
 stxbtree_multi_compress_email_c: stxbtree_multi_compress_email_c.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_c stxbtree_multi_compress_email_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_c stxbtree_multi_compress_email_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_email_c.o: latency_stxbtree_multi_compress_email_c.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_email_c.o latency_stxbtree_multi_compress_email_c.cc
 
 latency_stxbtree_multi_compress_email_c: latency_stxbtree_multi_compress_email_c.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_c latency_stxbtree_multi_compress_email_c.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_c latency_stxbtree_multi_compress_email_c.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 stxbtree_multi_compress_email_e.o: stxbtree_multi_compress_email_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o stxbtree_multi_compress_email_e.o stxbtree_multi_compress_email_e.cc
 
 stxbtree_multi_compress_email_e: stxbtree_multi_compress_email_e.o
-	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_e stxbtree_multi_compress_email_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm
+	$(CXX) $(CFLAGS) -o stxbtree_multi_compress_email_e stxbtree_multi_compress_email_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm
 
 latency_stxbtree_multi_compress_email_e.o: latency_stxbtree_multi_compress_email_e.cc microbench.hh stx/btree.h stx/btree_map.h 
 	$(CXX) $(CFLAGS) -c -o latency_stxbtree_multi_compress_email_e.o latency_stxbtree_multi_compress_email_e.cc
 
 latency_stxbtree_multi_compress_email_e: latency_stxbtree_multi_compress_email_e.o
-	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_e latency_stxbtree_multi_compress_email_e.o /usr/lib/libsnappy.so.1.1.2 $(MEMMGR) -lpthread -lm -lrt
+	$(CXX) $(CFLAGS) -o latency_stxbtree_multi_compress_email_e latency_stxbtree_multi_compress_email_e.o $(SNAPPY) $(MEMMGR) -lpthread -lm -lrt
 
 
 clean:
