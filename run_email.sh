@@ -1,0 +1,3 @@
+./stxbtree_compress_email_a
+./stxbtree_compress_email_c
+./stxbtree_compress_email_e

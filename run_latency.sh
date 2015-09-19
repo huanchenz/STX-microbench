@@ -1,0 +1,3 @@
+#bash run_latency_stxbtree_ori.sh
+bash run_latency_stxbtree_compact.sh
+bash run_latency_stxbtree_compress.sh
