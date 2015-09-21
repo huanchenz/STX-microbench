@@ -1645,6 +1645,8 @@ public:
         }
 
 	inline bool isBegin() {
+	  if ((currnode == NULL) && (currnode_static_compressed == NULL))
+	    return true;
 	  if (currnode == NULL)
 	    return (currnode_static_compressed->prevleaf == NULL) && (currslot_static == -1);
 	  if (currnode_static_compressed == NULL)
@@ -1653,6 +1655,8 @@ public:
 	}
 
 	inline bool isEnd() {
+	  if ((currnode == NULL) && (currnode_static_compressed == NULL))
+	    return true;
 	  if (currnode == NULL)
 	    return (currnode_static_compressed->nextleaf == NULL) && (currslot_static == currnode_static.slotuse);
 	  if (currnode_static_compressed == NULL)
@@ -1838,7 +1842,7 @@ public:
 	    (x.currnode == currnode) && (x.currslot == currslot) && (x.currtree == currtree);
 	  }
 
-          if (currnode && (currslot == currnode->slotuse) && currnode_static_compressed && (currslot_static == currnode_static->slotuse)) {
+          if (currnode && (currslot == currnode->slotuse) && currnode_static_compressed && (currslot_static == currnode_static.slotuse)) {
             return (x.currnode == currnode) && (x.currslot == currslot) && (x.currnode_static_compressed == currnode_static_compressed) && (x.currslot_static == currslot_static);
           }
           else if ((currslot == -1) && (currslot_static == -1)) {
@@ -1858,7 +1862,7 @@ public:
 	    (x.currnode != currnode) || (x.currslot != currslot) || (x.currtree != currtree);
 	  }
 
-          if (currnode && (currslot == currnode->slotuse) && currnode_static_compressed && (currslot_static == currnode_static->slotuse)) {
+          if (currnode && (currslot == currnode->slotuse) && currnode_static_compressed && (currslot_static == currnode_static.slotuse)) {
             return (x.currnode != currnode) || (x.currslot != currslot) || (x.currnode_static_compressed != currnode_static_compressed) || (x.currslot_static != currslot_static);
           }
           else if ((currslot == -1) && (currslot_static == -1)) {
@@ -3480,6 +3484,11 @@ private:
       //merge
       if ((BTREE_MERGE == 1) && ((m_stats.itemcount * BTREE_MERGE_RATIO) >= m_stats_static.itemcount) && (m_stats.itemcount >= BTREE_MERGE_THRESHOLD)) {
         merge();
+      }
+
+      //if (find_static(key) != hybrid_end()) {
+      if (!find_static(key).isEnd()) {
+	return std::pair<iterator, bool>(end(), false);
       }
 
         node* newchild = NULL;
