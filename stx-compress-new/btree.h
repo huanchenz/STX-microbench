@@ -3443,7 +3443,26 @@ public:
     /// duplicate keys, then the insert may fail if it is already present.
     inline std::pair<iterator, bool> insert2(const key_type& key, const data_type& data)
     {
-        return insert_start(key, data);
+      //merge
+      if ((BTREE_MERGE == 1) && ((m_stats.itemcount * BTREE_MERGE_RATIO) >= m_stats_static.itemcount) && (m_stats.itemcount >= BTREE_MERGE_THRESHOLD)) {
+        merge();
+      }
+
+      //if (find_static(key) != hybrid_end()) {
+      if (!find_static(key).isEnd()) {
+	return std::pair<iterator, bool>(end(), false);
+      }
+      return insert_start(key, data);
+    }
+
+    inline std::pair<iterator, bool> update2(const key_type& key, const data_type& data)
+    {
+      //merge
+      if ((BTREE_MERGE == 1) && ((m_stats.itemcount * BTREE_MERGE_RATIO) >= m_stats_static.itemcount) && (m_stats.itemcount >= BTREE_MERGE_THRESHOLD)) {
+        merge();
+      }
+
+      return insert_start(key, data);
     }
 
     /// Attempt to insert a key/data pair into the B+ tree. The iterator hint
@@ -3481,16 +3500,6 @@ private:
     /// splits. Returns true if the item was inserted
     std::pair<iterator, bool> insert_start(const key_type& key, const data_type& value)
     {
-      //merge
-      if ((BTREE_MERGE == 1) && ((m_stats.itemcount * BTREE_MERGE_RATIO) >= m_stats_static.itemcount) && (m_stats.itemcount >= BTREE_MERGE_THRESHOLD)) {
-        merge();
-      }
-
-      //if (find_static(key) != hybrid_end()) {
-      if (!find_static(key).isEnd()) {
-	return std::pair<iterator, bool>(end(), false);
-      }
-
         node* newchild = NULL;
         key_type newkey = key_type();
 
