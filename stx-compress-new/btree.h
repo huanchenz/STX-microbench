@@ -58,7 +58,7 @@
 #define BTREE_MERGE_RATIO 10
 
 #define USE_BLOOM_FILTER 1
-#define USE_BLOOM_FILTER_STATIC 1
+#define USE_BLOOM_FILTER_STATIC 0
 #define LITTLEENDIAN 1
 #define BITS_PER_KEY 8
 #define K 2
@@ -2732,7 +2732,7 @@ public:
     /// Return the number of key/data pairs in the B+ tree
     inline size_type size() const
     {
-        return m_stats.itemcount;
+        return m_stats.itemcount + m_stats_static.itemcount;
     }
 
     //huanchen
