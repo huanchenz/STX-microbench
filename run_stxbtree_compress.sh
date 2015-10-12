@@ -1,6 +1,6 @@
 #!bin/bash
 
-OUTPUT_FILE=./throughputs/stxbtree_compress_256_no_sbf.txt
+OUTPUT_FILE=./throughputs/stxbtree_compress_buffer_4K_sbf.txt
 
 echo "./stxbtree_compress_random_int_a"
 ./stxbtree_compress_random_int_a > $OUTPUT_FILE

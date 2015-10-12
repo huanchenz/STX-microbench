@@ -1,6 +1,6 @@
 #!bin/bash
 
-OUTPUT_FILE=./throughputs/stxbtree_multi_compact_256.txt
+OUTPUT_FILE=./throughputs/stxbtree_multi_compact_efficient_256.txt
 
 echo "./stxbtree_multi_compact_random_int_a"
 ./stxbtree_multi_compact_random_int_a > $OUTPUT_FILE
