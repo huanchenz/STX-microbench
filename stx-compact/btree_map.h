@@ -369,6 +369,11 @@ public:
         return tree.size();
     }
 
+    inline size_type static_size() const
+    {
+        return tree.static_size();
+    }
+
     //bloom filter
     inline size_type bloom_filter_size() const
     {

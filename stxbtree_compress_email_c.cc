@@ -80,6 +80,8 @@ int main() {
     count++;
   }
 
+  stxbtree->merge();
+
   std::cout << "stxbtree compress email " << "memory " << (memory + stxbtree->get_compressed_data_size() + stxbtree->get_bloom_filter_size() + stxbtree->get_leaf_buffer_size() + 0.0)/1000000 << "\n";
 
   //READ/UPDATE TEST----------------

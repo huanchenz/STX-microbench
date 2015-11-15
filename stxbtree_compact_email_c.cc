@@ -80,6 +80,8 @@ int main() {
     count++;
   }
 
+  stxbtree->merge();
+
   std::cout << "stxbtree compact email " << "memory " << (memory + stxbtree->bloom_filter_size() + 0.0)/1000000 << "\n"; //compact
 
   //READ/UPDATE TEST----------------

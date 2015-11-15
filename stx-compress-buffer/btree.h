@@ -59,6 +59,7 @@
 
 #define USE_BLOOM_FILTER 1
 #define USE_BLOOM_FILTER_STATIC 0
+#define USE_MIN_MAX 1
 #define LITTLEENDIAN 1
 #define BITS_PER_KEY 8
 #define K 2
@@ -2143,6 +2144,10 @@ private:
     size_t bits;
     size_t bits_static;
 
+    //min-max filter
+    key_type min_key;
+    key_type max_key;
+
     //huanchen-stats
     uint32_t leaf_size;
     uint32_t leaf_static_size;
@@ -3695,6 +3700,12 @@ public:
       //merge
       if ((BTREE_MERGE == 1) && ((m_stats.itemcount * BTREE_MERGE_RATIO) >= m_stats_static.itemcount) && (m_stats.itemcount >= BTREE_MERGE_THRESHOLD)) {
         merge();
+      }
+
+      if (USE_MIN_MAX) {
+	if (key_less(key, min_key) || key_less(max_key, key)) {
+	  return insert_start(key, data);
+	}
       }
 
       //if (find_static(key) != hybrid_end()) {
@@ -5658,6 +5669,13 @@ public:
         m_headleaf_static->prevleaf = NULL;
         ln_static = m_headleaf_static;
 	leaf_node *new_ln = allocate_leaf_static();
+
+	//min-max
+	if (USE_MIN_MAX) {
+	  min_key = ln->slotkey[0];
+	  max_key = ln->slotkey[0];
+	}
+
         while (ln != NULL) {
           for (int slot = 0; slot < ln->slotuse; slot++) {
             if (curslot >= leafslotmax) {
@@ -5681,8 +5699,19 @@ public:
             new_ln->slotdata[curslot] = ln->slotdata[slot];
             new_ln->slotuse++;
 	    ln_static->slotuse++;
+
+	    //bloom filter
 	    if (USE_BLOOM_FILTER_STATIC)
 	      InsertToFilter_static(reinterpret_cast<const char*>(&(new_ln->slotkey[curslot])), sizeof(key_type), bloom_filter_static);
+
+	    if (USE_MIN_MAX) {
+	      //min-max
+	      if (key_less(ln->slotkey[slot], min_key))
+		min_key = ln->slotkey[slot];
+	      if (key_less(max_key, ln->slotkey[slot]))
+		max_key = ln->slotkey[slot];
+	    }
+
             curslot++;
             m_stats_static.itemcount++;
           } //END for
@@ -5759,11 +5788,22 @@ public:
             else if (key_less(ln->slotkey[slot], ln_static_leaf->slotkey[slot_static])) {
               ln_new_leaf->slotkey[slot_new] = ln->slotkey[slot];
               ln_new_leaf->slotdata[slot_new] = ln->slotdata[slot];
+
+	      //bloom filter
+	      if (USE_BLOOM_FILTER_STATIC)
+		InsertToFilter_static(reinterpret_cast<const char*>(&(ln_new_leaf->slotkey[slot_new])), sizeof(key_type), bloom_filter_static);
+
+	      if (USE_MIN_MAX) {
+		//min-max
+		if (key_less(ln->slotkey[slot], min_key))
+		  min_key = ln->slotkey[slot];
+		if (key_less(max_key, ln->slotkey[slot]))
+		  max_key = ln->slotkey[slot];
+	      }
+
               slot++;
 	      ln_new->slotuse++;
 	      ln_new_leaf->slotuse++;
-	      if (USE_BLOOM_FILTER_STATIC)
-		InsertToFilter_static(reinterpret_cast<const char*>(&(ln_new_leaf->slotkey[slot_new])), sizeof(key_type), bloom_filter_static);
 	      slot_new++;
 	      m_stats_static.itemcount++;
             }
@@ -5817,10 +5857,21 @@ public:
             }
             ln_new_leaf->slotkey[slot_new] = ln->slotkey[slot];
             ln_new_leaf->slotdata[slot_new] = ln->slotdata[slot];
-            ln_new->slotuse++;
-            ln_new_leaf->slotuse++;
+
+	    //bloom filter
 	    if (USE_BLOOM_FILTER_STATIC)
 	      InsertToFilter_static(reinterpret_cast<const char*>(&(ln_new_leaf->slotkey[slot_new])), sizeof(key_type), bloom_filter_static);
+
+	    if (USE_MIN_MAX) {
+	      //min-max
+	      if (key_less(ln->slotkey[slot], min_key))
+		min_key = ln->slotkey[slot];
+	      if (key_less(max_key, ln->slotkey[slot]))
+		max_key = ln->slotkey[slot];
+	    }
+
+            ln_new->slotuse++;
+            ln_new_leaf->slotuse++;
             slot_new++;
             slot++;
             m_stats_static.itemcount++;
